@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./BE
+    ports:
+      - "5002:5002"
+    container_name: backend
+
+  admin:
+    build: ./Admin
+    ports:
+      - "8080:80"
+    container_name: admin
+    depends_on:
+      - backend
+
+  frontend:
+    build: ./fe
+    ports:
+      - "80:80"
+    container_name: frontend
+    depends_on:
+      - backend
