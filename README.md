@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# 📚 Tugas Mata Kuliah: Analisis & Pengujian Sistem IF7A
+# 📚 UTS Mata Kuliah: Analisis & Pengujian Sistem IF7A
 
 ## 👥 Informasi Kelompok
 
