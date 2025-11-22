@@ -11,6 +11,7 @@
 - Nourman-Rofiandi(22EO10021)
 - Cholifah-Kusuma-Dewi(22EO10010)
 - Randika-Damar-Hanaseru(22EO10011)
+- Ahmad-Mustaufiq(22EO10006)
 ---
 
 ## 📝 Deskripsi Proyek
