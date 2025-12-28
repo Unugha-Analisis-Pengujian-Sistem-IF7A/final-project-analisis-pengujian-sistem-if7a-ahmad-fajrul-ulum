@@ -76,7 +76,7 @@ export const login = async (req, res) => {
           const firebaseUser = await admin.auth().createUser({
             uid: user._id,
             email: user.email,
-            password: "default123",
+            password: Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8),
             displayName: user.fullName,
             photoURL: user.imgProfile || undefined,
           });
@@ -101,10 +101,10 @@ export const login = async (req, res) => {
 
 
     await transporter.sendMail({
-     from: `"Xeranet Security" <${process.env.EMAIL}>`,
+      from: `"Xeranet Security" <${process.env.EMAIL}>`,
       to: user.email,
-       subject: "Your OTP Code – Secure Login Verification",
-       html: `
+      subject: "Your OTP Code – Secure Login Verification",
+      html: `
         <div style="margin: 0; padding: 0; background-color: #f4f4f5;">
           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
             <tr>

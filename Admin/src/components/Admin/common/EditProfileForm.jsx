@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -137,8 +138,9 @@ const EditProfileForm = ({ open, onClose, profile }) => {
         {currentTab === "profile" && (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Nama Lengkap</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="fullName">Nama Lengkap</label>
               <input
+                id="fullName"
                 type="text"
                 name="fullName"
                 value={form.fullName}
@@ -149,8 +151,9 @@ const EditProfileForm = ({ open, onClose, profile }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Username</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="userName">Username</label>
               <input
+                id="userName"
                 type="text"
                 name="userName"
                 value={form.userName}
@@ -161,8 +164,9 @@ const EditProfileForm = ({ open, onClose, profile }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Email</label>
+              <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={form.email}
@@ -266,3 +270,13 @@ const EditProfileForm = ({ open, onClose, profile }) => {
 };
 
 export default EditProfileForm;
+
+EditProfileForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  profile: PropTypes.shape({
+    fullName: PropTypes.string,
+    userName: PropTypes.string,
+    email: PropTypes.string,
+  }),
+};

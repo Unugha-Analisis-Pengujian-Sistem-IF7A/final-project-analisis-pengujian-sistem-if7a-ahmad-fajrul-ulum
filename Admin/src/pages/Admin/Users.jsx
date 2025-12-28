@@ -82,18 +82,16 @@ const Users = () => {
                 <td>{user.email}</td>
                 <td>
                   <div
-                    className={`badge ${
-                      user.role === "admin" ? "badge-primary" : "badge-ghost"
-                    }`}
+                    className={`badge ${user.role === "admin" ? "badge-primary" : "badge-ghost"
+                      }`}
                   >
                     {user.role}
                   </div>
                 </td>
                 <td>
                   <div
-                    className={`badge ${
-                      user.status === "active" ? "badge-success" : "badge-error"
-                    }`}
+                    className={`badge ${user.status === "active" ? "badge-success" : "badge-error"
+                      }`}
                   >
                     {user.status}
                   </div>
@@ -108,6 +106,7 @@ const Users = () => {
                   <button
                     onClick={() => handleDelete(user.id)}
                     className="btn btn-sm btn-error"
+                    data-testid="delete-user-btn"
                   >
                     <FaTrash />
                   </button>

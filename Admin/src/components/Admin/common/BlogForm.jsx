@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -105,10 +105,11 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
 
           {/* Judul */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="title">
               <span className="label-text">Judul</span>
             </label>
             <input
+              id="title"
               type="text"
               className="input input-bordered w-full"
               placeholder="Masukkan judul blog"
@@ -122,10 +123,11 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
 
           {/* Konten */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="content">
               <span className="label-text">Konten</span>
             </label>
             <textarea
+              id="content"
               className="textarea textarea-bordered w-full min-h-[120px]"
               placeholder="Tulis konten blog di sini. Gunakan *italic*, **bold**, [teks](https://...) untuk styling."
               value={formData.content}
@@ -163,10 +165,11 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
 
           {/* Status */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="status">
               <span className="label-text">Status</span>
             </label>
             <select
+              id="status"
               className="select select-bordered w-full"
               value={formData.status}
               onChange={(e) =>
@@ -180,10 +183,11 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
 
           {/* Blog Image */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="blogImage">
               <span className="label-text">URL Gambar Blog (opsional)</span>
             </label>
             <input
+              id="blogImage"
               type="text"
               className="input input-bordered w-full"
               placeholder="https://example.com/image.jpg"
@@ -200,6 +204,7 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
                 ref={fileInputRef}
                 className="file-input file-input-bordered w-full"
                 onChange={handleImageChange}
+                aria-label="Upload gambar blog"
               />
               {imageFile && (
                 <p className="text-sm mt-1 text-green-600">
@@ -229,3 +234,16 @@ const BlogForm = ({ open, onClose, blog, setToast }) => {
 };
 
 export default BlogForm;
+
+BlogForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  blog: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    content: PropTypes.string,
+    blogImage: PropTypes.string,
+    status: PropTypes.string,
+  }),
+  setToast: PropTypes.func,
+};

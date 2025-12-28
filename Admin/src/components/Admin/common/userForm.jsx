@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUser, updateUser } from "../../../services/api";
 
+import PropTypes from "prop-types";
+
 const UserForm = ({ open, onClose, user }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -138,6 +140,18 @@ const UserForm = ({ open, onClose, user }) => {
       </div>
     </dialog>
   );
+};
+
+UserForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    role: PropTypes.string,
+    status: PropTypes.string,
+  }),
 };
 
 export default UserForm;

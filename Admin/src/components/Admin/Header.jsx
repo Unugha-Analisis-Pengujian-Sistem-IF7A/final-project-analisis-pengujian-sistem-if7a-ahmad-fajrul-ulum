@@ -25,7 +25,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await dispatch(logout());
+      await dispatch(logout()); // NOSONAR: createAsyncThunk returns a Promise
       navigate("/login");
     } catch (error) {
       console.error("Logout error:", error);
@@ -62,7 +62,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-50 bg-base-100 border-b border-base-300"
     >
-        <div className="px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between">
+      <div className="px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-4">
           <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-primary">

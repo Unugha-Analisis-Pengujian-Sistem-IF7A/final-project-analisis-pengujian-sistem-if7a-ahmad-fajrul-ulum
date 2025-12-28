@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -127,20 +128,20 @@ const FormTestimonials = ({ open, onClose, testimonial, onSuccess }) => {
             </label>
             {preview && (
               <div className="flex items-center gap-4 mb-4">
-    <img
-      src={preview}
-      alt="Preview"
-      className="rounded-full w-24 h-24 object-cover border"
-    />
-    <button
-      type="button"
-      onClick={handleRemoveImage}
-      className="btn btn-sm btn-outline btn-error"
-    >
-      <FaRegTimesCircle className="mr-2" />
-      Hapus Gambar
-    </button>
-  </div>
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="rounded-full w-24 h-24 object-cover border"
+                />
+                <button
+                  type="button"
+                  onClick={handleRemoveImage}
+                  className="btn btn-sm btn-outline btn-error"
+                >
+                  <FaRegTimesCircle className="mr-2" />
+                  Hapus Gambar
+                </button>
+              </div>
             )}
             <input
               type="file"
@@ -153,10 +154,11 @@ const FormTestimonials = ({ open, onClose, testimonial, onSuccess }) => {
 
           {/* Author */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="author">
               <span className="label-text">Nama</span>
             </label>
             <input
+              id="author"
               type="text"
               className="input input-bordered w-full"
               placeholder="Nama orang yang memberikan testimonial"
@@ -170,10 +172,11 @@ const FormTestimonials = ({ open, onClose, testimonial, onSuccess }) => {
 
           {/* Position */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="position">
               <span className="label-text">Posisi / Jabatan</span>
             </label>
             <input
+              id="position"
               type="text"
               className="input input-bordered w-full"
               placeholder="Misalnya: CEO PT ABC"
@@ -186,10 +189,11 @@ const FormTestimonials = ({ open, onClose, testimonial, onSuccess }) => {
 
           {/* Content */}
           <div>
-            <label className="label">
+            <label className="label" htmlFor="testimonialContent">
               <span className="label-text">Isi Testimonial</span>
             </label>
             <textarea
+              id="testimonialContent"
               className="textarea textarea-bordered w-full min-h-[100px]"
               placeholder="Tulis testimonial di sini..."
               value={formData.content}
@@ -241,3 +245,17 @@ const FormTestimonials = ({ open, onClose, testimonial, onSuccess }) => {
 };
 
 export default FormTestimonials;
+
+FormTestimonials.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  testimonial: PropTypes.shape({
+    _id: PropTypes.string,
+    author: PropTypes.string,
+    position: PropTypes.string,
+    content: PropTypes.string,
+    rating: PropTypes.number,
+    testimoniImage: PropTypes.string,
+  }),
+  onSuccess: PropTypes.func,
+};

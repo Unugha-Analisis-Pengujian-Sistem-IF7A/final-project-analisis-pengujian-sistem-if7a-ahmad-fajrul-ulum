@@ -35,7 +35,8 @@ const Hero = () => {
         await dispatch(removeHero(heroToDelete._id)).unwrap();
         setToast({ type: "success", message: "Hero berhasil dihapus" });
         dispatch(fetchHeroes());
-      } catch (error) {
+      } catch (err) {
+        console.error(err);
         setToast({ type: "error", message: "Gagal menghapus hero" });
       }
     }

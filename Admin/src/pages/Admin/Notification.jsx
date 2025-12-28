@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   FaEnvelope,
   FaExclamationCircle,
@@ -79,9 +78,8 @@ const NotificationsPage = () => {
           <button
             key={option}
             onClick={() => setFilter(option)}
-            className={`btn btn-sm ${
-              filter === option ? "btn-primary" : "btn-ghost"
-            }`}
+            className={`btn btn-sm ${filter === option ? "btn-primary" : "btn-ghost"
+              }`}
           >
             {option}
           </button>
@@ -92,27 +90,25 @@ const NotificationsPage = () => {
       <div className="space-y-4">
         {filteredNotifications.length === 0 ? (
           <p className="text-base-content/60 text-center py-10">
-            No notifications found for "{filter}".
+            No notifications found for &quot;{filter}&quot;.
           </p>
         ) : (
           filteredNotifications.map((notif) => (
             <motion.div
               key={notif.id}
-              className={`border rounded-lg p-4 shadow-md flex gap-4 items-start ${
-                notif.read ? "bg-base-200" : "bg-base-100"
-              }`}
+              className={`border rounded-lg p-4 shadow-md flex gap-4 items-start ${notif.read ? "bg-base-200" : "bg-base-100"
+                }`}
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
             >
               <span
-                className={`text-xl mt-1 ${
-                  notif.type === "alert"
-                    ? "text-warning"
-                    : notif.type === "message"
+                className={`text-xl mt-1 ${notif.type === "alert"
+                  ? "text-warning"
+                  : notif.type === "message"
                     ? "text-info"
                     : "text-success"
-                }`}
+                  }`}
               >
                 {notif.icon}
               </span>

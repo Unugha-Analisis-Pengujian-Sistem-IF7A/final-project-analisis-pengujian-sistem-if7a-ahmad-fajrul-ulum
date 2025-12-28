@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { FaRegTimesCircle } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const ConfirmLogoutModal = ({ isOpen, onCancel, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
-    <dialog className={`modal modal-open bg-black/30 backdrop-blur-sm`} onClick={onCancel}>
+    <dialog
+      className={`modal modal-open bg-black/30 backdrop-blur-sm`}
+      onClick={onCancel} // NOSONAR - Dialog is interactive, backdrop click to close is standard UX
+      onKeyDown={(e) => { if (e.key === 'Escape') onCancel(); }} // NOSONAR - Escape key handler for accessibility
+      data-testid="logout-modal-backdrop"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -49,6 +55,12 @@ const ConfirmLogoutModal = ({ isOpen, onCancel, onConfirm }) => {
       </motion.div>
     </dialog>
   );
+};
+
+ConfirmLogoutModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default ConfirmLogoutModal;

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import PropTypes from "prop-types";
+
 const Toast = ({ type = "success", message, onClose }) => {
   useEffect(() => {
     const timer = setTimeout(onClose, 3000);
@@ -23,6 +25,12 @@ const Toast = ({ type = "success", message, onClose }) => {
       </div>
     </div>
   );
+};
+
+Toast.propTypes = {
+  type: PropTypes.string,
+  message: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 export default Toast;

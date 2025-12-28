@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addLogoPT, editLogoPT } from "../../../app/data/logoPTSlice";
@@ -29,7 +30,7 @@ const LogoPTForm = ({ open, onClose, logo }) => {
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("title", data.namaPT);
-    if (data.logoImage && data.logoImage[0]) {
+    if (data.logoImage?.[0]) {
       formData.append("logoPTImage", data.logoImage[0]);
     }
 
@@ -71,8 +72,9 @@ const LogoPTForm = ({ open, onClose, logo }) => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="label">Nama PT</label>
+            <label className="label" htmlFor="namaPT">Nama PT</label>
             <input
+              id="namaPT"
               type="text"
               className="input input-bordered w-full"
               {...register("namaPT", { required: true })}
@@ -80,8 +82,9 @@ const LogoPTForm = ({ open, onClose, logo }) => {
           </div>
 
           <div>
-            <label className="label">Logo</label>
+            <label className="label" htmlFor="logoImage">Logo</label>
             <input
+              id="logoImage"
               type="file"
               className="file-input file-input-bordered w-full"
               {...register("logoImage")}
@@ -116,6 +119,16 @@ const LogoPTForm = ({ open, onClose, logo }) => {
       </motion.div>
     </dialog>
   );
+};
+
+LogoPTForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  logo: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    logoPTImage: PropTypes.string,
+  }),
 };
 
 export default LogoPTForm;

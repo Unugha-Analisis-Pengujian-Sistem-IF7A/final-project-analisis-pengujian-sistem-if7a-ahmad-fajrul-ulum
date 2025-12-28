@@ -19,6 +19,8 @@ const menuItems = [
   { text: "Logo Partner", icon: <MdBadge size={22} />, path: "/admin/logo-partner" },
 ];
 
+import PropTypes from "prop-types";
+
 const Sidebar = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
 
@@ -50,10 +52,9 @@ const Sidebar = ({ children }) => {
               <NavLink
                 to={path}
                 className={({ isActive }) =>
-                  `flex items-center gap-4 px-4 py-3 rounded-md transition-all duration-200 ${
-                    isActive
-                      ? "bg-white/20 text-white shadow-md"
-                      : "text-white/80 hover:bg-white/10 hover:text-white"
+                  `flex items-center gap-4 px-4 py-3 rounded-md transition-all duration-200 ${isActive
+                    ? "bg-white/20 text-white shadow-md"
+                    : "text-white/80 hover:bg-white/10 hover:text-white"
                   }`
                 }
               >
@@ -76,6 +77,10 @@ const Sidebar = ({ children }) => {
       </main>
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Sidebar;

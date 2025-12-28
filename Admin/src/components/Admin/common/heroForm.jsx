@@ -5,6 +5,8 @@ import { addHero, editHero, fetchHeroes } from "../../../app/data/heroSlice";
 import { motion } from "framer-motion";
 import { FaRegTimesCircle } from "react-icons/fa";
 
+import PropTypes from "prop-types";
+
 const HeroForm = ({ open, onClose, hero }) => {
   const {
     register,
@@ -140,14 +142,25 @@ const HeroForm = ({ open, onClose, hero }) => {
                   ? "Menyimpan..."
                   : "Menambahkan..."
                 : hero
-                ? "Simpan Perubahan"
-                : "Tambah Hero"}
+                  ? "Simpan Perubahan"
+                  : "Tambah Hero"}
             </button>
           </div>
         </form>
       </motion.div>
     </dialog>
   );
+};
+
+HeroForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  hero: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    isActive: PropTypes.bool,
+    heroImage: PropTypes.string,
+  }),
 };
 
 export default HeroForm;

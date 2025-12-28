@@ -57,6 +57,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
 import { useSelector } from "react-redux";
 import Loading from "../components/Admin/common/Loading";
+import PropTypes from "prop-types";
 
 const ProtectedRoutes = ({ children }) => {
   const { user: userFirebase, loading: authLoading } = useAuth();
@@ -76,6 +77,10 @@ const ProtectedRoutes = ({ children }) => {
 
   // Jika tidak memenuhi, redirect ke login
   return <Navigate to={"/login"} replace />;
+};
+
+ProtectedRoutes.propTypes = {
+  children: PropTypes.node,
 };
 
 export default ProtectedRoutes;

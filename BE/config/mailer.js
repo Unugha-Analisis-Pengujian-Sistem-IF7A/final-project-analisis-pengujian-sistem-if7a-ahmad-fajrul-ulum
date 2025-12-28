@@ -8,7 +8,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-console.log(process.env.EMAIL);
-console.log(process.env.PASSWORD);
+
 
 export default transporter;

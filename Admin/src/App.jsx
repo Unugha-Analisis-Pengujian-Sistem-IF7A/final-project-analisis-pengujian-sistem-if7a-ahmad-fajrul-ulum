@@ -36,7 +36,7 @@ function ScrollToTop() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "" && location.hash === "#service") {
+    if (location.pathname === "/" && location.hash === "#service") {
       const element = document.getElementById("service");
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });

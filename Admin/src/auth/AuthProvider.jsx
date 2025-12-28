@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { auth } from "../firebase";
 import { getMe } from "../app/users/authSlice";
@@ -18,10 +19,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (firebaseUser) => {
       if (firebaseUser) {
-       
+
 
         const token = await firebaseUser.getIdToken();
-       
+
         setUser({
           uid: firebaseUser.uid,
           email: firebaseUser.email,
@@ -31,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         setIdToken(token);
         dispatch(getMe(token)); // <<<<< BENERAN BAWA TOKEN
       } else {
-       
+
         setUser(null);
         setIdToken(null);
       }
@@ -41,11 +42,21 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, [dispatch]);
 
+  const value = useMemo(() => ({
+    user,
+    loading,
+    idToken
+  }), [user, loading, idToken]);
+
   return (
-    <AuthContext.Provider value={{ user, loading, idToken }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node,
 };
 
 export default AuthProvider;

@@ -15,4 +15,17 @@ export default defineConfig({
     },
   },
   plugins: [react(), tailwindcss()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/setupTests.js",
+    css: true,
+    coverage: {
+      reporter: ['text', 'json', 'html', 'lcov'],
+      reportsDirectory: './coverage',
+      all: true,
+      include: ['src/**/*.{jsx,js}'],
+      exclude: ['src/setupTests.js', 'src/**/*.test.{jsx,js}']
+    }
+  },
 });

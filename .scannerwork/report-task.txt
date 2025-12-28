@@ -1,0 +1,6 @@
+projectKey=Static-Code-Analysis-Test
+serverUrl=http://192.168.18.46:9093
+serverVersion=25.12.0.117093
+dashboardUrl=http://192.168.18.46:9093/dashboard?id=Static-Code-Analysis-Test
+ceTaskId=b864b67a-123d-412f-81b4-6b6eaca6a0d0
+ceTaskUrl=http://192.168.18.46:9093/api/ce/task?id=b864b67a-123d-412f-81b4-6b6eaca6a0d0

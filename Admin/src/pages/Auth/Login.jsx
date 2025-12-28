@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -33,7 +33,7 @@ const LoginPage = () => {
 
       setTimeout(() => {
         // navigate("/verify-2fa");
-               navigate("/admin");
+        navigate("/admin");
       }, 500);
     } catch (error) {
       console.error("Login failed:", error);

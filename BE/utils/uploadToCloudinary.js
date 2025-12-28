@@ -9,46 +9,48 @@ export const uploadToCloudinary = async (
   file,
   folder = "uploads"
 ) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (!fileBuffer) return reject(new Error("File buffer is empty"));
 
     const isImage = file?.mimetype?.startsWith("image/");
     const resourceType = isImage ? "image" : "raw";
 
-    try {
-      const processedBuffer = isImage
-        ? await sharp(fileBuffer)
+    (async () => {
+      try {
+        const processedBuffer = isImage
+          ? await sharp(fileBuffer)
             .resize({ width: 1200 }) // optional: resize max width 1200px
             .jpeg({ quality: 80 }) // optional: compress to jpeg
             .toBuffer()
-        : fileBuffer;
+          : fileBuffer;
 
-      const uploadStream = cloudinary.uploader.upload_stream(
-        {
-          folder,
-          resource_type: resourceType,
-          use_filename: true,
-          transformation: isImage
-            ? [{ quality: "auto" }, { fetch_format: "auto" }]
-            : undefined,
-        },
-        (error, result) => {
-          if (error) {
-            console.log("Upload error:", error);
-            return reject(error);
+        const uploadStream = cloudinary.uploader.upload_stream(
+          {
+            folder,
+            resource_type: resourceType,
+            use_filename: true,
+            transformation: isImage
+              ? [{ quality: "auto" }, { fetch_format: "auto" }]
+              : undefined,
+          },
+          (error, result) => {
+            if (error) {
+              console.log("Upload error:", error);
+              return reject(error);
+            }
+            resolve({
+              url: result.secure_url,
+              public_id: result.public_id,
+            });
           }
-          resolve({
-            url: result.secure_url,
-            public_id: result.public_id,
-          });
-        }
-      );
+        );
 
-      streamifier.createReadStream(processedBuffer).pipe(uploadStream);
-    } catch (err) {
-      console.log("Error processing file:", err);
-      reject(err);
-    }
+        streamifier.createReadStream(processedBuffer).pipe(uploadStream);
+      } catch (err) {
+        console.log("Error processing file:", err);
+        reject(err);
+      }
+    })();
   });
 };
 

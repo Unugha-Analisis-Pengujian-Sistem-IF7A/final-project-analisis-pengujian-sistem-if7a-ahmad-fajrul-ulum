@@ -1,4 +1,5 @@
 import { useEditor, EditorContent } from "@tiptap/react";
+import PropTypes from "prop-types";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
@@ -17,9 +18,8 @@ const MenuButton = ({ onClick, icon: Icon, isActive }) => (
   <button
     onClick={onClick}
     type="button"
-    className={`p-2 rounded-md hover:bg-gray-100 transition ${
-      isActive ? "bg-gray-200 text-blue-600" : "text-gray-600"
-    }`}
+    className={`p-2 rounded-md hover:bg-gray-100 transition ${isActive ? "bg-gray-200 text-blue-600" : "text-gray-600"
+      }`}
   >
     <Icon size={18} />
   </button>
@@ -93,7 +93,7 @@ const RichEditor = ({ content, setContent }) => {
     if (editor && content !== editor.getHTML()) {
       editor.commands.setContent(content);
     }
-  }, [content]);
+  }, [content, editor]);
 
   return (
     <div className="bg-white rounded-md">
@@ -101,6 +101,21 @@ const RichEditor = ({ content, setContent }) => {
       <EditorContent editor={editor} className="px-3" />
     </div>
   );
+};
+
+RichEditor.propTypes = {
+  content: PropTypes.string,
+  setContent: PropTypes.func.isRequired,
+};
+
+MenuButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  isActive: PropTypes.bool,
+};
+
+MenuBar.propTypes = {
+  editor: PropTypes.object,
 };
 
 export default RichEditor;

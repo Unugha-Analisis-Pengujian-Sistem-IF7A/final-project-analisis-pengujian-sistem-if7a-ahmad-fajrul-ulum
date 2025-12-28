@@ -1,9 +1,10 @@
-/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AdminThemeContext = createContext();
 
 export const useAdminTheme = () => useContext(AdminThemeContext);
+
+import PropTypes from "prop-types";
 
 export const AdminThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
@@ -11,7 +12,7 @@ export const AdminThemeProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.dataset.theme = theme;
     localStorage.setItem("admin-theme", theme);
   }, [theme]);
 
@@ -24,4 +25,8 @@ export const AdminThemeProvider = ({ children }) => {
       {children}
     </AdminThemeContext.Provider>
   );
+};
+
+AdminThemeProvider.propTypes = {
+  children: PropTypes.node,
 };

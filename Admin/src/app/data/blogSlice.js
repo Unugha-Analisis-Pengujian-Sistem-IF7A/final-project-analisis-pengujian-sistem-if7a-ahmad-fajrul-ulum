@@ -4,14 +4,14 @@ import { getBlogs, createBlog, updateBlog, deleteBlog } from "../service/api";
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   const response = await getBlogs();
-  return response.blogs; 
+  return response.blogs;
 });
 
 export const createNewBlog = createAsyncThunk(
   "blogs/createNewBlog",
   async (formData) => {
     const response = await createBlog(formData);
-    return response.blog; 
+    return response.blog;
   }
 );
 
@@ -26,8 +26,8 @@ export const updateExistingBlog = createAsyncThunk(
 export const deleteExistingBlog = createAsyncThunk(
   "blogs/deleteExistingBlog",
   async (id) => {
-    const response = await deleteBlog(id);
-    return id; 
+    await deleteBlog(id);
+    return id;
   }
 );
 

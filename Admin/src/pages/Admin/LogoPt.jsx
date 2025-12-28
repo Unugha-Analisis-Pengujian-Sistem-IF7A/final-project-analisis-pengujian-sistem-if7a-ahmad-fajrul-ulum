@@ -35,7 +35,8 @@ const LogoPT = () => {
         await dispatch(removeLogoPT(logoToDelete._id)).unwrap();
         setToast({ type: "success", message: "Logo berhasil dihapus" });
         dispatch(fetchLogoPTs());
-      } catch (error) {
+      } catch (err) {
+        console.error(err);
         setToast({ type: "error", message: "Gagal menghapus logo" });
       }
     }

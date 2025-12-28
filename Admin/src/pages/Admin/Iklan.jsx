@@ -35,7 +35,8 @@ const Iklan = () => {
         await dispatch(removeIklan(iklanToDelete._id)).unwrap();
         setToast({ type: "success", message: "Iklan berhasil dihapus" });
         dispatch(fetchIklan());
-      } catch (error) {
+      } catch (err) {
+        console.error(err);
         setToast({ type: "error", message: "Gagal menghapus iklan" });
       }
     }

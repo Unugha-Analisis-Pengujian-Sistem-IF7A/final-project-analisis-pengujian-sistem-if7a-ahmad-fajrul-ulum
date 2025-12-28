@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addIklan, editIklan, fetchIklan } from "../../../app/data/iklanSlice";
@@ -55,6 +56,13 @@ const IklanForm = ({ open, onClose, iklan }) => {
 
   if (!open) return null;
 
+  const getButtonText = () => {
+    if (isSubmitting) {
+      return iklan ? "Menyimpan..." : "Menambahkan...";
+    }
+    return iklan ? "Simpan Perubahan" : "Tambah Iklan";
+  };
+
   return (
     <dialog className={`modal ${open ? "modal-open" : ""}`}>
       <motion.div
@@ -78,8 +86,9 @@ const IklanForm = ({ open, onClose, iklan }) => {
           </div>
 
           <div>
-            <label className="label">Judul</label>
+            <label className="label" htmlFor="title">Judul</label>
             <input
+              id="title"
               type="text"
               {...register("title", { required: true })}
               className="input input-bordered w-full"
@@ -88,8 +97,9 @@ const IklanForm = ({ open, onClose, iklan }) => {
           </div>
 
           <div>
-            <label className="label">Upload Gambar Iklan</label>
+            <label className="label" htmlFor="iklanImageFile">Upload Gambar Iklan</label>
             <input
+              id="iklanImageFile"
               type="file"
               accept="image/*"
               {...register("iklanImageFile")}
@@ -98,8 +108,9 @@ const IklanForm = ({ open, onClose, iklan }) => {
           </div>
 
           <div>
-            <label className="label">Atau Gunakan URL Gambar</label>
+            <label className="label" htmlFor="iklanImage">Atau Gunakan URL Gambar</label>
             <input
+              id="iklanImage"
               type="text"
               {...register("iklanImage")}
               className="input input-bordered w-full"
@@ -135,19 +146,24 @@ const IklanForm = ({ open, onClose, iklan }) => {
               className="btn btn-primary"
               disabled={isSubmitting}
             >
-              {isSubmitting
-                ? iklan
-                  ? "Menyimpan..."
-                  : "Menambahkan..."
-                : iklan
-                ? "Simpan Perubahan"
-                : "Tambah Iklan"}
+              {getButtonText()}
             </button>
           </div>
         </form>
       </motion.div>
     </dialog>
   );
+};
+
+IklanForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  iklan: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    isActive: PropTypes.bool,
+    iklanImage: PropTypes.string,
+  }),
 };
 
 export default IklanForm;

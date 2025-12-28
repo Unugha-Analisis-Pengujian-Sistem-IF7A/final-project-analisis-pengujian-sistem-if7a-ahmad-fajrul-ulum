@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fecthDataDashboard } from "../../app/data/dashboardSlice";
