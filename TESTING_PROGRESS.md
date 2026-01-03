@@ -1,6 +1,6 @@
 # 📋 Progress Implementasi Testing & Quality Assurance
 
-**Tanggal Update:** 28 Desember 2025  
+**Tanggal Update:** 02 Januari 2026  
 **Repository:** final-project-analisis-pengujian-sistem-if7a-ahmad-fajrul-ulum
 
 ---
@@ -11,8 +11,9 @@
 
 #### Backend (BE)
 - **Framework:** Jest v30.2.0
-- **Test Files:** 2 file test
+- **Test Files:** 3 file test
   - `BE/tests/user.controllers.test.js` (9 test cases)
+  - `BE/tests/auth.controllers.test.js` (22 test cases)
   - `BE/tests/uploadToCloudinary.test.js`
   
 **Konfigurasi:**
@@ -242,7 +243,7 @@ sonar-scanner
 
 | Komponen | Status | Framework/Tool | Coverage |
 |----------|--------|----------------|----------|
-| **Unit Testing (BE)** | ✅ Implemented | Jest | 2 test files |
+| **Unit Testing (BE)** | ✅ Implemented | Jest | 3 test files |
 | **Unit Testing (Admin)** | ✅ Implemented | Vitest | 14 test files |
 | **Linter** | ✅ Configured | ESLint 9.21 | Admin, FE |
 | **Static Code Analysis** | ✅ Configured | SonarQube | Full project |

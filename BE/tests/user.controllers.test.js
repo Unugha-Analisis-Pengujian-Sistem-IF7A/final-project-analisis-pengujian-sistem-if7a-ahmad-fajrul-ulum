@@ -41,7 +41,7 @@ jest.unstable_mockModule("../config/firebase.js", () => ({
 const { updateProfile } = await import("../controllers/user.controllers.js");
 const User = (await import("../models/user.models.js")).default;
 const bcrypt = (await import("bcrypt")).default;
-const { uploadToCloudinary, downloadAndUpload } = await import("../utils/uploadToCloudinary.js");
+const { uploadToCloudinary } = await import("../utils/uploadToCloudinary.js");
 const admin = (await import("../config/firebase.js")).default;
 
 describe("User Controllers - updateProfile", () => {

@@ -43,7 +43,7 @@ export const deleteOneNotification = async (req, res) => {
     }
 
     res.status(200).json({ message: "Notification deleted successfully" });
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -56,7 +56,7 @@ export const deleteAllNotifications = async (req, res) => {
       message: "All notifications deleted successfully",
       deleteCount: result.deletedCount,
     });
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -75,7 +75,7 @@ export const markNotificationAsRead = async (req, res) => {
     }
 
     res.status(200).json({ message: "Notification marked as read" });
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -92,7 +92,7 @@ export const markAllNotificationsAsRead = async (req, res) => {
       message: "All notifications marked as read",
       modificationCount: result.modifiedCount,
     });
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Internal server error" });
   }
 };
