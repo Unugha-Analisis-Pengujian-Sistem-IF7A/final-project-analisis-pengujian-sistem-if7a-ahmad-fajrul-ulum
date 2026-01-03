@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-# 📚 UTS Mata Kuliah: Analisis & Pengujian Sistem IF7A
 
-## 👥 Informasi Kelompok
+# Mata Kuliah: Analisis & Pengujian Sistem IF7A
+
+## Informasi Kelompok
 
 **Mata Kuliah:** Analisis & Pengujian Sistem
 
@@ -14,7 +14,7 @@
 - Ahmad-Mustaufiq(22EO10006)
 ---
 
-## 📝 Deskripsi Proyek
+## Deskripsi Proyek
 
 Repositori ini berisi artefak, dokumen, dan kode yang berkaitan dengan tugas mata kuliah Analisis & Pengujian Sistem. 
 
@@ -22,17 +22,17 @@ Repositori ini berisi artefak, dokumen, dan kode yang berkaitan dengan tugas mat
 Proyek ini bertujuan untuk menganalisis kebutuhan, merancang arsitektur, dan mengimplementasikan pengujian fungsional untuk sistem informasi manajemen perpustakaan yang terintegrasi dengan fitur autentikasi, manajemen konten, dan notifikasi real-time.
 
 **Fitur Utama:**
-- ✅ Sistem Autentikasi & Otorisasi
-- ✅ Manajemen Konten (Blog, Hero, Iklan, Logo PT)
-- ✅ Manajemen Testimoni & Rating
-- ✅ Sistem Notifikasi Real-time
-- ✅ Dashboard Admin
-- ✅ Upload & Manajemen Media (Cloudinary)
-- ✅ Two-Factor Authentication (2FA)
+- Sistem Autentikasi & Otorisasi
+- Manajemen Konten (Blog, Hero, Iklan, Logo PT)
+- Manajemen Testimoni & Rating
+- Sistem Notifikasi Real-time
+- Dashboard Admin
+- Upload & Manajemen Media (Cloudinary)
+- Two-Factor Authentication (2FA)
 
 ---
 
-## 📊 Desain Proyek (Unified Modeling Language)
+## Desain Proyek (Unified Modeling Language)
 
 ### Use Case Diagram
 
@@ -125,7 +125,7 @@ End
 
 ---
 
-## 🏗️ Arsitektur Proyek (Unified Modeling Language)
+## Arsitektur Proyek (Unified Modeling Language)
 
 ### Arsitektur Umum
 
@@ -136,7 +136,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 │                    PRESENTATION LAYER                        │
 │  ┌──────────────────┐  ┌──────────────────┐                 │
 │  │  Admin Frontend  │  │   FE Frontend    │                 │
-│  ���  (React/Vite)   │  │  (React/Vite)    │                 │
+│  │   (React/Vite)   │  │   (React/Vite)   │                 │
 │  └──────────────────┘  └──────────────────┘                 │
 │         Port: 3000           Port: 5175                      │
 └─────────────────────────────────────────────────────────────┘
@@ -162,7 +162,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 │  │  │  - CORS & Security (Helmet, CSP)              │  │   │
 │  │  │  - File Upload (Multer)                        │  │   │
 │  │  └────────────────────────────────────────────────┘  │   │
-│  ��  ┌────────────────────────────────────────────────┐  │   │
+│  │  ┌────────────────────────────────────────────────┐  │   │
 │  │  │  Services                                      │  │   │
 │  │  │  - OTP Generation                              │  │   │
 │  │  │  - ID Token Management                         │  │   │
@@ -173,7 +173,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 │                      Port: 5003                              │
 └─────────────────────────────────────────────────────────────┘
                               ↓ MongoDB Driver
-┌──────────────────────────────────────────���──────────────────┐
+┌─────────────────────────────────────────────────────────────┐
 │                    DATA ACCESS LAYER                         │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  MongoDB Database                                    │   │
@@ -200,7 +200,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 │  │  Firebase    │  │  Cloudinary  │  │  Nodemailer  │      │
 │  │  (Auth/DB)   │  │  (Media CDN)  │  │  (Email)     │      │
 │  └──────────────┘  └──────────────┘  └──────────────┘      │
-└────────────────────────────────────────────────────────────��┘
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ### Alur Data
@@ -214,7 +214,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -277,7 +277,7 @@ Proyek ini menggunakan **3-Tier Architecture** dengan pemisahan yang jelas antar
 
 ---
 
-## 📁 Struktur Direktori
+## Struktur Direktori
 
 ```
 XeranetID/
@@ -356,7 +356,7 @@ XeranetID/
 
 ---
 
-## 🚀 Cara Menjalankan Proyek
+## Cara Menjalankan Proyek
 
 ### Prerequisites
 
@@ -429,7 +429,7 @@ docker-compose up -d
 
 ---
 
-## 📋 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register User
@@ -477,7 +477,7 @@ docker-compose up -d
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Unit Testing
 ```bash
@@ -496,7 +496,7 @@ npm run test:e2e
 
 ---
 
-## 📚 Dokumentasi Tambahan
+## Dokumentasi Tambahan
 
 - [API Documentation](./docs/API.md)
 - [Database Schema](./docs/DATABASE.md)
@@ -505,7 +505,7 @@ npm run test:e2e
 
 ---
 
-## 🤝 Kontribusi
+## Kontribusi
 
 Untuk berkontribusi pada proyek ini:
 
@@ -517,7 +517,7 @@ Untuk berkontribusi pada proyek ini:
 
 ---
 
-## 📝 Lisensi
+## Lisensi
 
 Proyek ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
 
@@ -525,6 +525,4 @@ Proyek ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) unt
 
 **Last Updated:** 2025
 **Status:** Active Development
-=======
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/N8wljNIU)
->>>>>>> 3c3c6fc3d9a67dff715c30f4e26f59d9e82c48f5
+
