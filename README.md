@@ -1,6 +1,10 @@
 
 # Mata Kuliah: Analisis & Pengujian Sistem IF7A
 
+![Unit Test Result](./image/Unit-test.png)
+![Lint Test Result](./image/Tes-lint.png)
+![SonarQube Analysis Result](./image/Sonarqube-analysis-static-code.png)
+
 ## Informasi Kelompok
 
 **Mata Kuliah:** Analisis & Pengujian Sistem
