@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Header from './Header';
@@ -5,7 +6,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import React from 'react';
-import { logout } from '../../app/users/authSlice';
 
 // Mocks
 vi.mock('../../app/users/authSlice', () => ({

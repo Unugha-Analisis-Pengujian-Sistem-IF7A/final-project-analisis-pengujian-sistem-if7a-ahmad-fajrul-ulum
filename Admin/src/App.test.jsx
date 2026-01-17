@@ -30,7 +30,7 @@ describe('App & ScrollToTop', () => {
     });
 
     it('redirects root to login', () => {
-        const { getByTestId } = render(
+        render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/']}>
                     <App />
